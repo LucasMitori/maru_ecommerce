@@ -16,6 +16,9 @@ import os
 import dotenv
 from django.core.management.utils import get_random_secret_key
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 dotenv.load_dotenv()
 
@@ -61,7 +64,7 @@ THIRD_PARTY_APPS = [
     "drf_spectacular",
 ]
 
-MY_APPS = ["users"]
+MY_APPS = ["users", "products", "purchases"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
@@ -150,7 +153,7 @@ SIMPLE_JWT = {
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 5,
+    "PAGE_SIZE": 2,
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
@@ -195,3 +198,9 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+cloudinary.config(
+    cloud_name="dx231szfy",
+    api_key="118635232295459",
+    api_secret="WO3fSBOBB1w6tXEdInyiJSf9OsM",
+)
